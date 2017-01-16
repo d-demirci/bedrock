@@ -42,9 +42,7 @@
 {% block site_header %}
   {% include 'mozorg/home/includes/home-icons-sprite.svg' %}
   {% with is_home = True %}
-    {% if switch('mozorg-home-brand-announce') %}
-      {% set logo_src = static('img/pebbles/moz-wordmark-dark-reverse.svg') %}
-    {% endif %}
+    {% set logo_src = static('img/pebbles/moz-wordmark-dark-reverse.svg') %}
     {% include 'mozorg/home/includes/nav.html' %}
   {% endwith %}
 {% endblock %}
@@ -73,6 +71,10 @@
     </div>
   {% endblock %}
   </section>
+
+  {% if LANG.startswith('en-') and switch('mozorg-home-brand-popup') %}
+    {% include 'mozorg/home/includes/brand-popup.html' %}
+  {% endif %}
 
   <section class="section" id="who-innovate-wrapper">
     <section class="section-wrapper" id="who">
@@ -211,11 +213,6 @@
   </aside>
 
 </main>
-
-{% if LANG.startswith('en-') and switch('mozorg-home-brand-announce') %}
-  {% include 'mozorg/home/includes/brand-takeover.html' %}
-{% endif %}
-
 {% endblock %}
 
 {% block js %}
