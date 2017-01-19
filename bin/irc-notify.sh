@@ -31,8 +31,8 @@ while [[ $# -gt 1 ]]; do
             STATUS="$2"
             shift # past argument
             ;;
-        --demo_url)
-            DEMO_URL="$2"
+        --app_url)
+            APP_URL="$2"
             shift # past argument
             ;;
         -m|--message)
@@ -60,13 +60,13 @@ if [[ -z "$MESSAGE" ]]; then
         STATUS=$(echo "$STATUS" | tr '[:lower:]' '[:upper:]')
         case "$STATUS" in
           'SUCCESS')
-            STATUS_COLOR="${BOLD}${GREEN}"
+            STATUS_COLOR="🎉 ${BOLD}${GREEN}"
             ;;
           'WARNING')
-            STATUS_COLOR="${BOLD}${YELLOW}"
+            STATUS_COLOR="⚠️ ${BOLD}${YELLOW}"
             ;;
           'FAILURE')
-            STATUS_COLOR="${BOLD}${RED}"
+            STATUS_COLOR="🚨 ${BOLD}${RED}"
             ;;
           *)
             STATUS_COLOR="$BLUE"
@@ -74,12 +74,12 @@ if [[ -z "$MESSAGE" ]]; then
         esac
         MESSAGE="${STATUS_COLOR}${STATUS}${NORMAL}: ${STAGE}:"
         MESSAGE="$MESSAGE Branch ${BOLD}${BRANCH_NAME}${NORMAL} build #${BUILD_NUMBER}: ${BUILD_URL}"
-    elif [[ -n "$DEMO_URL" ]]; then
-        MESSAGE="${BOLD}${GREEN}SUCCESS${NORMAL}: Demo deployed: ${DEMO_URL}"
+    elif [[ -n "$APP_URL" ]]; then
+        MESSAGE="🎉 ${BOLD}${GREEN}SUCCESS${NORMAL}: 🚢 ${APP_URL}"
     else
         echo "Missing required arguments"
         echo
-        echo "Usage: irc-notify.sh [--stage STAGE --status STATUS] [--demo_url DEMO_URL]"
+        echo "Usage: irc-notify.sh [--stage STAGE --status STATUS] [--demo_url APP_URL]"
         echo "Optional args: --irc_nick, --irc_server, --irc_channel"
         exit 1
     fi
