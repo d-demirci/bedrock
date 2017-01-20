@@ -11,7 +11,7 @@
             var $pixel = $('<img />', {
                 width: '1',
                 height: '1',
-                src: 'https://servedby.flashtalking.com/spot/8/6247;40428;4669/?spotName=Mozilla_Download_Conversion'
+                src: 'https://ad.doubleclick.net/ddm/activity/src=6417015;type=deskt0;cat=mozil0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1;num=1?&_dc_ck=try'
             });
             $('body').append($pixel);
         }

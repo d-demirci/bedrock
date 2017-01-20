@@ -1302,5 +1302,5 @@ GOOG_CUSTOM_SEARCH_TYPES = {
     'activist': '014783244707853607354:bbpl3emdsii',
 }
 
-if config('SWITCH_FLASHTALKING', default=DEV, cast=bool):
-    CSP_IMG_SRC += ('servedby.flashtalking.com',)
+if config('SWITCH_TRACKING_PIXEL', default=DEV, cast=bool):
+    CSP_IMG_SRC += ('ad.doubleclick.net',)
